@@ -1,0 +1,57 @@
+# Building @dangbt/pro-ui
+
+Tôi bắt đầu xây dựng `@dangbt/pro-ui` vì một lý do đơn giản: tôi cần một component library
+không chỉ đẹp mà còn **accessible by default** và **developer-friendly**.
+
+## Tại sao không dùng shadcn/ui?
+
+shadcn/ui tuyệt vời, nhưng nó copy-paste components vào codebase của bạn. Điều đó có nghĩa là
+mỗi khi có update, bạn phải manually merge. Tôi muốn một **npm package** thực sự — install một lần,
+update bằng `pnpm update`.
+
+## React Aria — nền tảng accessibility
+
+Thay vì tự implement keyboard navigation, focus management, và ARIA attributes từ đầu,
+tôi chọn **React Aria** từ Adobe làm nền tảng. Nó handle tất cả browser quirks và
+accessibility requirements để tôi tập trung vào design.
+
+```tsx
+import { Button as RAButton } from 'react-aria-components'
+
+// React Aria xử lý: keyboard, focus, ARIA, touch, hover states
+export function Button({ variant = 'primary', ...props }) {
+  return <RAButton {...props} />
+}
+```
+
+## Tailwind v4 — CSS mới
+
+pro-ui dùng **Tailwind v4** với CSS variables cho theming:
+
+```css
+:root {
+  --primary: #6366f1;  /* Thay đổi 1 biến = đổi toàn bộ color scheme */
+  --base-radius: 8px;
+}
+```
+
+## TypeScript first
+
+Tất cả components được type chặt chẽ, export `ComponentProps` types để consumers dùng:
+
+```tsx
+import type { ProTableProps, ProColumnType } from '@dangbt/pro-ui'
+
+const columns: ProColumnType<User>[] = [
+  { title: 'Name', dataIndex: 'name', sortable: true },
+]
+```
+
+## Kết quả
+
+Sau nhiều tháng, `@dangbt/pro-ui` hiện có **50+ components**, MCP server cho AI agents,
+và một CLI scaffold. Version hiện tại: `1.3.21`.
+
+```bash
+npm install @dangbt/pro-ui
+```

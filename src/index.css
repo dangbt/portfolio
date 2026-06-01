@@ -1,0 +1,45 @@
+@import "tailwindcss";
+@import "@dangbt/pro-ui/theme.css";
+@plugin "tailwindcss-react-aria-components";
+@source "../node_modules/@dangbt/pro-ui/src";
+
+:root {
+  --primary: #6366f1;
+  --base-radius: 8px;
+  --sz-sm: 1.75rem;
+  --sz-md: 2.25rem;
+  --sz-lg: 2.75rem;
+  --sz: var(--sz-md);
+}
+
+@keyframes gradient-x {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-up-delay {
+  0%, 20% { opacity: 0; transform: translateY(24px); }
+  100%    { opacity: 1; transform: translateY(0); }
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 4s ease infinite;
+}
+.animate-fade-up   { animation: fade-up 0.6s ease both; }
+.animate-fade-up-2 { animation: fade-up-delay 0.9s ease both; }
+.animate-fade-up-3 { animation: fade-up-delay 1.2s ease both; }
+
+html { scroll-behavior: smooth; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: oklch(50% 0 0 / 30%);
+  border-radius: 3px;
+}

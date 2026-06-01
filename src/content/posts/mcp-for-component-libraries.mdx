@@ -1,0 +1,48 @@
+# MCP server cho component library
+
+Khi AI agents như Claude Code hay Cursor cố gắng dùng một component library,
+chúng thường **hallucinate** props không tồn tại. Nguyên nhân: chúng không có
+context về API thực tế.
+
+## Model Context Protocol (MCP)
+
+MCP là protocol cho phép AI agents gọi tools để fetch thông tin. Thay vì AI
+đoán mò API, nó có thể gọi:
+
+```
+get_component_api("Button")
+→ { variant: "primary | secondary | ghost | danger", size: "sm | md | lg", ... }
+```
+
+## Vấn đề tôi giải quyết
+
+`@dangbt/pro-ui` có 50 components. Trước đây:
+- AI agents chỉ biết 23 components (phần nhỏ trong docs)
+- Props thường bị hallucinate sai
+- Examples không compile được
+
+## Giải pháp: `mcp-pro-ui`
+
+Tôi build một MCP server với 5 tools:
+
+```bash
+claude mcp add mcp-pro-ui -- npx -y mcp-pro-ui
+```
+
+**Tools:**
+- `list_components` — list tất cả 50 components
+- `get_component_api` — props table chi tiết
+- `get_component_example` — copy-paste code
+- `search_components` — tìm theo use case
+- `scaffold_page` — generate full CRUD page
+
+## Kết quả
+
+Sau khi có MCP server, AI agents có thể vibe code với pro-ui mà không cần nhớ API.
+Chỉ cần:
+
+```
+"tạo cho tôi một trang CRUD users dùng @dangbt/pro-ui"
+```
+
+AI sẽ gọi `scaffold_page("crud-list", "User")` và generate code chính xác 100%.
