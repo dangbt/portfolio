@@ -1,73 +1,59 @@
-# React + TypeScript + Vite
+# dangbt.dev — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio of **Dâng Bùi Tấn** (dangbt), full-stack developer.
 
-Currently, two official plugins are available:
+🌐 **Live:** [dangbt-portfolio.pages.dev](https://dangbt-portfolio.pages.dev)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Stack
 
-## React Compiler
+- **Vite** + **React** + **TypeScript**
+- **[@dangbt/pro-ui](https://pro-ui.pages.dev)** — component library
+- **Tailwind CSS v4**
+- **react-i18next** — EN / VI
+- **MDX** — blog posts
+- **Cloudflare Pages** — deploy
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- Dark / light / system theme
+- EN / VI language switcher (persisted)
+- Appearance config panel — color, radius, theme
+- Blog with MDX posts
+- Auto-deploy on push to `main`
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Dev
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+pnpm install
+pnpm dev        # http://localhost:5173
+pnpm build      # production build → dist/
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Deploy
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Push to `main` → GitHub Actions builds and deploys to Cloudflare Pages automatically.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Manual deploy:
+
+```bash
+pnpm build
+CLOUDFLARE_API_TOKEN=... CLOUDFLARE_ACCOUNT_ID=... \
+  npx wrangler pages deploy dist --project-name=dangbt-portfolio --branch=main --commit-dirty=true
 ```
+
+## Structure
+
+```
+src/
+├── components/       # Navbar, Hero, About, Projects, Skills, Footer, AppearancePanel
+├── pages/            # Home, Blog, BlogPost
+├── content/posts/    # MDX blog posts
+├── data/             # projects.ts, skills.ts, posts.ts
+└── i18n/             # en.ts, vi.ts
+```
+
+## Contact
+
+- Email: [buitandang96@gmail.com](mailto:buitandang96@gmail.com)
+- GitHub: [github.com/dangbt](https://github.com/dangbt)
+- npm: [npmjs.com/~dangbt](https://www.npmjs.com/~dangbt)
