@@ -25,7 +25,7 @@ export function Footer() {
             className="text-fg-muted hover:text-fg transition-colors" aria-label="npm">
             <Package size={18} />
           </a>
-          <a href="mailto:infinitee.vn@gmail.com"
+          <a href="mailto:buitandang96@gmail.com"
             className="text-fg-muted hover:text-fg transition-colors" aria-label="Email">
             <Mail size={18} />
           </a>

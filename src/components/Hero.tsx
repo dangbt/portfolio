@@ -68,7 +68,7 @@ export function Hero() {
               <GithubIcon size={16} /> {t('hero.cta_github')}
             </Button>
           </a>
-          <a href="mailto:infinitee.vn@gmail.com">
+          <a href="mailto:buitandang96@gmail.com">
             <Button variant="ghost" size="lg">
               <Mail size={16} /> {t('hero.cta_contact')}
             </Button>
