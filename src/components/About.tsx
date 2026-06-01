@@ -40,7 +40,7 @@ export function About() {
                       href="https://pro-ui.pages.dev"
                       target="_blank"
                       rel="noreferrer"
-                      className="text-indigo-400 font-medium hover:text-indigo-300 transition-colors"
+                      className="text-primary font-medium hover:opacity-80 transition-colors"
                     />
                   ),
                 }}
@@ -54,7 +54,7 @@ export function About() {
                 { icon: Cpu, text: t('about.ai') },
               ].map(({ icon: Icon, text }) => (
                 <div key={text} className="flex items-center gap-3 text-sm text-fg-muted">
-                  <Icon size={14} className="text-indigo-400 shrink-0" />
+                  <Icon size={14} className="text-primary shrink-0" />
                   {text}
                 </div>
               ))}

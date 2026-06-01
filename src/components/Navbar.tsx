@@ -22,7 +22,7 @@ export function Navbar() {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="font-bold text-lg text-fg hover:text-primary transition-colors">
-          <span className="bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
+          <span className="text-primary">
             dangbt
           </span>
           <span className="text-fg-muted">.dev</span>

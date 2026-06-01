@@ -17,8 +17,8 @@ export function Hero() {
 
       <div className="max-w-5xl mx-auto text-center relative">
         {/* Badge */}
-        <div className="animate-fade-up inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-sm text-indigo-400">
-          <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
+        <div className="animate-fade-up inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-full border border-primary/30 bg-primary/10 text-sm text-primary">
+          <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
           {t('hero.badge')}
         </div>
 
@@ -47,7 +47,7 @@ export function Hero() {
             href="https://pro-ui.pages.dev"
             target="_blank"
             rel="noreferrer"
-            className="text-indigo-400 hover:text-indigo-300 transition-colors"
+            className="text-primary hover:opacity-80 transition-colors"
           >
             @dangbt/pro-ui
           </a>
@@ -83,7 +83,7 @@ export function Hero() {
             { value: '∞', key: 'hero.stat_coffee' },
           ].map(s => (
             <div key={s.key} className="text-center">
-              <div className="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
+              <div className="text-2xl font-bold text-primary">
                 {s.value}
               </div>
               <div className="text-xs text-fg-muted mt-1">{t(s.key)}</div>

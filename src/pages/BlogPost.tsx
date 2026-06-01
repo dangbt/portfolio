@@ -35,7 +35,7 @@ export function BlogPost() {
       <header className="mb-10">
         <div className="flex items-center gap-2 mb-4">
           {post.tags.map(tag => (
-            <span key={tag} className="px-2 py-0.5 text-xs rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-400">
+            <span key={tag} className="px-2 py-0.5 text-xs rounded-full border border-primary/30 bg-primary/10 text-primary">
               {tag}
             </span>
           ))}

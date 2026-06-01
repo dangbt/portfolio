@@ -16,12 +16,12 @@ export function Blog() {
       <div className="flex flex-col gap-6">
         {POSTS.map(post => (
           <Link key={post.slug} to={`/blog/${post.slug}`} className="group block">
-            <article className="rounded-2xl border border-border bg-surface p-6 hover:border-indigo-500/50 hover:-translate-y-0.5 transition-all duration-200 hover:shadow-lg hover:shadow-indigo-500/5">
+            <article className="rounded-2xl border border-border bg-surface p-6 hover:border-primary/50 hover:-translate-y-0.5 transition-all duration-200 hover:shadow-lg hover:shadow-primary/5">
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-2 flex-wrap">
                     {post.tags.map(tag => (
-                      <span key={tag} className="px-2 py-0.5 text-xs rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-400">
+                      <span key={tag} className="px-2 py-0.5 text-xs rounded-full border border-primary/30 bg-primary/10 text-primary">
                         {tag}
                       </span>
                     ))}

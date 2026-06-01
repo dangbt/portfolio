@@ -26,7 +26,7 @@ export function Projects() {
 
 function ProjectCard({ project }: { project: typeof PROJECTS[0] }) {
   return (
-    <div className="group relative flex flex-col rounded-2xl border border-border bg-surface hover:border-border-subtle transition-all duration-300 hover:shadow-xl hover:shadow-indigo-500/5 hover:-translate-y-1 overflow-hidden">
+    <div className="group relative flex flex-col rounded-2xl border border-border bg-surface hover:border-border-subtle transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-1 overflow-hidden">
       <div className={`h-1 w-full bg-gradient-to-r ${project.color}`} />
 
       <div className="flex flex-col flex-1 p-6">
