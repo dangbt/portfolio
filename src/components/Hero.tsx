@@ -22,10 +22,10 @@ export function Hero() {
           {t('hero.badge')}
         </div>
 
-        {/* Name */}
-        <h1 className="animate-fade-up text-5xl sm:text-7xl font-bold tracking-tight mb-4">
+        {/* Handle */}
+        <h1 className="animate-fade-up text-5xl sm:text-7xl font-bold tracking-tight mb-4 font-mono">
           <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-pink-400 bg-clip-text text-transparent animate-gradient-x">
-            Dâng Bùi Tấn
+            dangbt
           </span>
         </h1>
 
