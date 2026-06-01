@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useTheme } from '@dangbt/pro-ui'
 import { Sun, Moon, Menu as MenuIcon } from 'lucide-react'
 import { useState } from 'react'
@@ -12,7 +12,7 @@ const LINKS = [
 
 export function Navbar() {
   const { theme, setTheme } = useTheme()
-  const location = useLocation()
+  // const location = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
 
   return (

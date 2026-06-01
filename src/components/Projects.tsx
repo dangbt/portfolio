@@ -1,6 +1,5 @@
-import { ExternalLink, Package, ArrowRight } from 'lucide-react'
+import { ExternalLink, Package } from 'lucide-react'
 import { GithubIcon } from './GithubIcon'
-import { Badge } from '@dangbt/pro-ui'
 import { PROJECTS } from '../data/projects'
 
 export function Projects() {

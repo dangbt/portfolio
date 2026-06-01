@@ -1,7 +1,6 @@
-import { Package, Mail, ArrowRight } from 'lucide-react'
+import { Mail, ArrowRight } from 'lucide-react'
 import { GithubIcon } from './GithubIcon'
 import { Button } from '@dangbt/pro-ui'
-import { Link } from 'react-router-dom'
 
 export function Hero() {
   return (
