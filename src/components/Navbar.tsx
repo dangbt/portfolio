@@ -2,18 +2,20 @@ import { Link } from 'react-router-dom'
 import { useTheme } from '@dangbt/pro-ui'
 import { Sun, Moon, Menu as MenuIcon } from 'lucide-react'
 import { useState } from 'react'
-
-const LINKS = [
-  { to: '/#about', label: 'About' },
-  { to: '/#projects', label: 'Projects' },
-  { to: '/#skills', label: 'Skills' },
-  { to: '/blog', label: 'Blog' },
-]
+import { useTranslation } from 'react-i18next'
+import { LANGUAGES } from '../i18n'
 
 export function Navbar() {
   const { theme, setTheme } = useTheme()
-  // const location = useLocation()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const { t, i18n } = useTranslation()
+
+  const LINKS = [
+    { to: '/#about', label: t('nav.about') },
+    { to: '/#projects', label: t('nav.projects') },
+    { to: '/#skills', label: t('nav.skills') },
+    { to: '/blog', label: t('nav.blog') },
+  ]
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/50 bg-canvas/80 backdrop-blur-md">
@@ -40,7 +42,25 @@ export function Navbar() {
         </nav>
 
         {/* Right actions */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
+          {/* Language switcher */}
+          <div className="hidden sm:flex items-center gap-0.5 mr-1 border border-border rounded-md overflow-hidden">
+            {LANGUAGES.map(lang => (
+              <button
+                key={lang.code}
+                onClick={() => i18n.changeLanguage(lang.code)}
+                className={`px-2.5 py-1 text-xs font-medium transition-colors ${
+                  i18n.language === lang.code
+                    ? 'bg-primary text-white'
+                    : 'text-fg-muted hover:text-fg hover:bg-surface-subtle'
+                }`}
+              >
+                {lang.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Theme toggle */}
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             className="w-9 h-9 flex items-center justify-center rounded-md text-fg-muted hover:text-fg hover:bg-surface-subtle transition-colors"
@@ -48,6 +68,8 @@ export function Navbar() {
           >
             {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
           </button>
+
+          {/* Mobile menu button */}
           <button
             className="sm:hidden w-9 h-9 flex items-center justify-center rounded-md text-fg-muted hover:text-fg hover:bg-surface-subtle transition-colors"
             onClick={() => setMobileOpen(v => !v)}
@@ -71,6 +93,21 @@ export function Navbar() {
               {l.label}
             </a>
           ))}
+          <div className="flex gap-1 mt-2 pt-2 border-t border-border">
+            {LANGUAGES.map(lang => (
+              <button
+                key={lang.code}
+                onClick={() => { i18n.changeLanguage(lang.code); setMobileOpen(false) }}
+                className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
+                  i18n.language === lang.code
+                    ? 'bg-primary text-white'
+                    : 'text-fg-muted hover:bg-surface-subtle'
+                }`}
+              >
+                {lang.flag} {lang.label}
+              </button>
+            ))}
+          </div>
         </div>
       )}
     </header>

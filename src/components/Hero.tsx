@@ -1,8 +1,11 @@
 import { Mail, ArrowRight } from 'lucide-react'
 import { GithubIcon } from './GithubIcon'
 import { Button } from '@dangbt/pro-ui'
+import { useTranslation } from 'react-i18next'
 
 export function Hero() {
+  const { t } = useTranslation()
+
   return (
     <section className="relative pt-24 pb-20 px-4 sm:px-6 overflow-hidden">
       {/* Background glow */}
@@ -16,7 +19,7 @@ export function Hero() {
         {/* Badge */}
         <div className="animate-fade-up inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-sm text-indigo-400">
           <span className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
-          Available for work
+          {t('hero.badge')}
         </div>
 
         {/* Name */}
@@ -28,7 +31,7 @@ export function Hero() {
 
         {/* Role */}
         <p className="animate-fade-up-2 text-xl sm:text-2xl text-fg-muted mb-6 font-medium">
-          Full Stack Developer
+          {t('hero.role')}
           <span className="text-fg-disabled mx-2">·</span>
           <span className="text-indigo-400">React</span>
           <span className="text-fg-disabled mx-2">·</span>
@@ -39,8 +42,7 @@ export function Hero() {
 
         {/* Bio */}
         <p className="animate-fade-up-2 text-fg-muted max-w-lg mx-auto mb-10 leading-relaxed">
-          I build accessible, developer-friendly React component libraries and full-stack web apps.
-          Author of{' '}
+          {t('hero.bio')}{' '}
           <a
             href="https://pro-ui.pages.dev"
             target="_blank"
@@ -59,16 +61,16 @@ export function Hero() {
             size="lg"
             onPress={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            View Projects <ArrowRight size={16} />
+            {t('hero.cta_projects')} <ArrowRight size={16} />
           </Button>
           <a href="https://github.com/dangbt" target="_blank" rel="noreferrer">
             <Button variant="secondary" size="lg">
-              <GithubIcon size={16} /> GitHub
+              <GithubIcon size={16} /> {t('hero.cta_github')}
             </Button>
           </a>
           <a href="mailto:infinitee.vn@gmail.com">
             <Button variant="ghost" size="lg">
-              <Mail size={16} /> Contact
+              <Mail size={16} /> {t('hero.cta_contact')}
             </Button>
           </a>
         </div>
@@ -76,15 +78,15 @@ export function Hero() {
         {/* Stats */}
         <div className="animate-fade-up-3 mt-16 grid grid-cols-3 gap-6 max-w-sm mx-auto">
           {[
-            { value: '50+', label: 'Components' },
-            { value: '3+', label: 'npm packages' },
-            { value: '∞', label: 'Coffee' },
+            { value: '50+', key: 'hero.stat_components' },
+            { value: '3+', key: 'hero.stat_packages' },
+            { value: '∞', key: 'hero.stat_coffee' },
           ].map(s => (
-            <div key={s.label} className="text-center">
+            <div key={s.key} className="text-center">
               <div className="text-2xl font-bold bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
                 {s.value}
               </div>
-              <div className="text-xs text-fg-muted mt-1">{s.label}</div>
+              <div className="text-xs text-fg-muted mt-1">{t(s.key)}</div>
             </div>
           ))}
         </div>
