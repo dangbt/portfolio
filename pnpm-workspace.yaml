@@ -1,0 +1,2 @@
+minimumReleaseAgeExclude:
+  - '@dangbt/pro-ui@1.12.0'

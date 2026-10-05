@@ -8,6 +8,10 @@ const POST_MODULES: Record<string, () => Promise<{ default: React.ComponentType 
   'mcp-for-component-libraries': () => import('../content/posts/mcp-for-component-libraries.mdx'),
 }
 
+const POST_COMPONENTS = Object.fromEntries(
+  Object.entries(POST_MODULES).map(([slug, load]) => [slug, lazy(load)]),
+)
+
 export function BlogPost() {
   const { slug } = useParams<{ slug: string }>()
   const post = POSTS.find(p => p.slug === slug)
@@ -22,7 +26,7 @@ export function BlogPost() {
     )
   }
 
-  const Content = lazy(POST_MODULES[slug])
+  const Content = POST_COMPONENTS[slug]
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16">
